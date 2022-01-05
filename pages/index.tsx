@@ -1,9 +1,129 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Product from '../components/Product'
 
 const Home: NextPage = () => {
+ 
+  var shampoos = [
+    {
+      id: 1,
+      imageUrl: '../photos/s1.jpeg',
+      name: 'Johnson',
+      count: 4,
+      size: {
+        width: 200,
+        height: 200,
+      },
+      weight: '200g',
+      comments: [
+        {
+          id: 1,
+          productId: 1,
+          text: "Johnson & Johnson company.",
+          date: "14:00 04.01.2022"
+        },
+      ],
+    },
+
+    {
+      id: 2,
+      imageUrl: '../photos/s2.jpeg',
+      name: 'Garnier',
+      count: 4,
+      size: {
+        width: 200,
+        height: 200,
+      },
+      weight: '200g',
+      comments: [
+        {
+          id: 2,
+          productId: 2,
+          text: "Garnier corp.",
+          date: "13:00 03.01.2022",
+        },
+      ],
+    },
+    { id: 3,
+      imageUrl: '../photos/s3.jpeg',
+      name: 'Dove',
+      count: 4,
+      size: {
+        width: 200,
+        height: 200,
+      },
+      weight: '200g',
+      comments: [
+        {
+          id: 3,
+          productId: 3,
+          text: "Dove comp.",
+          date: "13:00 03.01.2022",
+        },
+      ],
+    },
+    { id: 4 ,
+      imageUrl:'../photos/s4.jpeg',
+      name: 'Axe', 
+      count: 2,
+      size: {
+        width: 200,
+        height: 200,
+      },
+      weight: '250g',
+      comments: [
+        {
+          id: 4,
+          productId: 4,
+          text: "Johnson&Johnson",
+          date: "13:00 03.01.2022",
+        },
+       ],
+     },
+    {
+       id: 5,
+       imageUrl: '../photos/s5.jpeg',
+       name: 'Palmolive', 
+       count: 7,
+       size: {
+         width: 200,
+         height: 200,
+       },
+       weight: '200g',
+       comments: [
+         {
+           id: 5,
+           productId: 5,
+           text: "Johnson&Johnson",
+           date: "13:00 03.01.2022",
+         },
+        ],
+       },
+    { 
+      id: 6, 
+      imageUrl: '../photos/s6.jpeg',
+      name: 'Head and shoulders',
+      count: 6,
+      size: {
+        width: 200,
+        height: 200,
+      },
+      weight: '250g',
+      comments: [
+        {
+          id: 6,
+          productId: 6,
+          text: "P&G company",
+          date: "13:00 03.01.2022",
+        },
+       ],
+     },
+  ]
+  const listItems = shampoos.map((d) => <li key={d.name}>{d.name}</li>)
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,44 +133,23 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        
+        <h1>Our Products</h1>
+        
+        <a href="addProd"><button>Add a Product</button></a>
+        
+        {listItems}
+       
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Product imgUrl={shampoos[0].imageUrl} id={shampoos[0].id} name={shampoos[0].name} />
+          <Product imgUrl={shampoos[1].imageUrl} id={shampoos[1].id} name={shampoos[1].name} />
+          <Product imgUrl={shampoos[2].imageUrl} id={shampoos[2].id} name={shampoos[2].name} />
+          <Product imgUrl={shampoos[3].imageUrl} id={shampoos[3].id} name={shampoos[3].name} />
+          <Product imgUrl={shampoos[4].imageUrl} id={shampoos[4].id} name={shampoos[4].name} />
+          <Product imgUrl={shampoos[5].imageUrl} id={shampoos[5].id} name={shampoos[5].name} />
         </div>
+
       </main>
 
       <footer className={styles.footer}>
@@ -69,4 +168,7 @@ const Home: NextPage = () => {
   )
 }
 
+
 export default Home
+
+
